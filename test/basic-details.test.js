@@ -20,7 +20,7 @@ describe('Basic details', () => {
     it('_numToWord() - renders in words', () => {
         const spy = Sinon.spy(el, '_numToWord');
         el._numToWord();
-        el.shadowRoot.querySelector('.amount').value = 12000;
+        el.shadowRoot.querySelector('.amount').value = 10000;
         expect(spy).to.have.called
         expect(el.shadowRoot.querySelector('#word').innerHTML.trim()).to.equal('ten thousand');
         spy.restore();
@@ -41,7 +41,7 @@ describe('Basic details', () => {
         expect(spy.args[0][1].method).to.equal('POST');
         expect(spy.args[0][1].body).deep.equal('{"name":"Personal Loan","amount":"10000","period":"10"}');
         expect(spy).to.have.called;
-        // spy.restore();
+        spy.restore();
     });
 
     it('_captureDetails() - doesnt makes a post request as amount is less than 10k', () => {
